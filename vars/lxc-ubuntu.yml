@@ -1,0 +1,10 @@
+---
+libvirt_packages: 
+  - libvirt-bin
+  - lxc
+  - python-libvirt
+
+libvirt_service_name: libvirt-bin
+
+libvirt_configuration_files:
+  - libvirtd.conf
