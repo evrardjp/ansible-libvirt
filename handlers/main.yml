@@ -1,0 +1,4 @@
+---
+# handlers file for libvirt
+- name: restart libvirtd
+  service: name="{{ daemon_name }}" state=restarted

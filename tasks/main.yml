@@ -1,0 +1,21 @@
+---
+# tasks file for libvirt
+- name: Gathering OS Specific Variables
+  include_vars: "{{ item }}"
+  with_first_found:
+    - "../vars/{{ backend }}-{{ ansible_distribution }}-{{ ansible_distribution_version }}.yml"
+    - "../vars/{{ backend }}-{{ ansible_distribution }}.yml"
+
+- name: Installing libvirt package and the selected backend
+  apt: name="{{ item }}" state=present
+  with_items: libvirt_packages
+
+- name: Configuring libvirt and its backend
+  template: src="{{ item }}.j2" dest=/etc/libvirt/{{ item }}
+  with_items: libvirt_configuration_files
+  notify:
+    - restart libvirtd 
+
+- name: Adapting libvirtd defaults is listening on tcp
+  template: src="{{ libvirt_service_name }}.j2" dest=/etc/default/{{ libvirt_service_name }}
+  when: libvirtd_listen_tcp

@@ -1,0 +1,13 @@
+---
+libvirt_packages: 
+  - libvirt-bin
+  - kvm
+  - qemu-kvm
+  - kvm-ipxe 
+  - python-libvirt
+
+libvirt_service_name: libvirt-bin
+
+libvirt_configuration_files:
+  - libvirtd.conf
+  - qemu.conf
