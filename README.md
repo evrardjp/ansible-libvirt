@@ -6,33 +6,39 @@ This role installs libvirt daemon on the host and a backend to run your virtual 
 Requirements
 ------------
 
-Any pre-requisites that may not be covered by Ansible itself or the role should be mentioned here. For instance, if the role uses the EC2 module, it may be a good idea to mention in this section that the boto package is required.
+This role needs the python-libvirt library. It automatically installs it on the managed host.
 
 Role Variables
 --------------
 
-A description of the settable variables for this role should go here, including any variables that are in defaults/main.yml, vars/main.yml, and any variables that can/should be set via parameters to the role. Any variables that are read from other roles and/or the global scope (ie. hostvars, group vars, etc.) should be mentioned here as well.
+You could adapt the role, by changing the following variables:
+* backend: kvm
+  This variable changes the backend that you'll use for libvirt. Basically it only changes the installed packages.
+* libvirtd_listen_tls: True
+  This variable could be set to false if you don't want to worry about tls. Then you need to adapt your listen_tcp variable (cf. next variable)
+* libvirtd_listen_tcp: False
+  This will adapt the libvirtd config file and the ubuntu defaults. Libvirtd will listen directly to tcp. SASL login still needs to be done in order to have an usable system.
+
+More variables will be added overtime.
 
 Dependencies
 ------------
 
-A list of other roles hosted on Galaxy should go here, plus any details in regards to parameters that may need to be set for other roles, or variables that are used from other roles.
+No dependencies yet.
 
 Example Playbook
 ----------------
 
-Including an example of how to use your role (for instance, with variables passed in as parameters) is always nice for users too:
-
     - hosts: servers
       roles:
-         - { role: username.libvirt, backend: lxc }
+         - { role: evrardjp.libvirt, backend: kvm }
 
 License
 -------
 
-CC-BY
+MIT License
 
 Author Information
 ------------------
 
-An optional section for the role authors to include contact information, or a website (HTML is not allowed).
+Nothing interesting. This repository is just a first public version, nothing great. Feel free to improve it and to send me a PR.
