@@ -12,7 +12,7 @@ Role Variables
 --------------
 
 You could adapt the role, by changing the following variables:
-* backend: kvm
+* libvirt_backend: kvm
   This variable changes the backend that you'll use for libvirt. Basically it only changes the installed packages.
 * libvirtd_listen_tls: True
   This variable could be set to false if you don't want to worry about tls. Then you need to adapt your listen_tcp variable (cf. next variable)
@@ -31,7 +31,7 @@ Example Playbook
 
     - hosts: servers
       roles:
-         - { role: evrardjp.libvirt, backend: kvm }
+         - { role: evrardjp.libvirt, libvirt_backend: kvm }
 
 License
 -------
