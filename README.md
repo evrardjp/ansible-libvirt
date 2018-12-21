@@ -1,44 +1,12 @@
-Libvirt Installation
-====================
+This project is no longer maintained.
 
-This role installs libvirt daemon on the host and a backend to run your virtual machines.
+The contents of this repository are still available in the Git
+source code management system.  To see the contents of this
+repository before it reached its end of life, please check out the
+previous commit with "git checkout HEAD^1".
 
-Requirements
-------------
+If you want another role doing the equivalent, please check one
+of the following:
 
-This role needs the python-libvirt library. It automatically installs it on the managed host.
-
-Role Variables
---------------
-
-You could adapt the role, by changing the following variables:
-* libvirt_backend: kvm
-  This variable changes the backend that you'll use for libvirt. Basically it only changes the installed packages.
-* libvirtd_listen_tls: True
-  This variable could be set to false if you don't want to worry about tls. Then you need to adapt your listen_tcp variable (cf. next variable)
-* libvirtd_listen_tcp: False
-  This will adapt the libvirtd config file and the ubuntu defaults. Libvirtd will listen directly to tcp. SASL login still needs to be done in order to have an usable system.
-
-More variables will be added overtime.
-
-Dependencies
-------------
-
-No dependencies yet.
-
-Example Playbook
-----------------
-
-    - hosts: servers
-      roles:
-         - { role: evrardjp.libvirt, libvirt_backend: kvm }
-
-License
--------
-
-MIT License
-
-Author Information
-------------------
-
-Nothing interesting. This repository is just a first public version, nothing great. Feel free to improve it and to send me a PR.
+* https://github.com/stackhpc/ansible-role-libvirt-host
+* https://github.com/debops/debops

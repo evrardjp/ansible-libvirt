@@ -1,5 +1,0 @@
----
-# defaults file for libvirt
-libvirt_backend: kvm
-libvirtd_listen_tls: True
-libvirtd_listen_tcp: False

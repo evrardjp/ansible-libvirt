@@ -1,4 +1,0 @@
----
-# handlers file for libvirt
-- name: restart libvirtd
-  service: name="{{ libvirt_service_name }}" state=restarted
